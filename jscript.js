@@ -86,3 +86,8 @@ numberPad.zero.addEventListener('click', () => {
     inputs.push(newInput);
     updatesOutput();
 });
+
+const darkModeBtn = document.querySelector('#mode-switch');
+darkModeBtn.addEventListener('click', () => {
+    document.querySelector('body').classList.toggle('darkMode');
+});
