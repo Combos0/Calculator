@@ -3,7 +3,7 @@ let inputs = [];
 const outputDisplay = document.getElementById('output-space');
 outputDisplay.textContent = 0;
 function updatesOutput() {
-    outputDisplay.textContent = inputs;
+    outputDisplay.textContent = inputs.join('');
 };
 
 const numberPad = {
