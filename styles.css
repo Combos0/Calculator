@@ -1,8 +1,16 @@
 body {
     margin: 0;
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
+    grid-row-gap: 5vh;
+    background-color: aliceblue;
+}
+
+#header {
+    justify-self: center;
+    margin-top: 40px;
+    font-size: x-large;
 }
 
 #wrapper {
@@ -12,16 +20,66 @@ body {
     align-items: center;
     gap: 16px;
     border: 1px dotted black;
-    max-width: 50vw;
+    width: 30vw;
+    height: 50vh;
+    background-color: cornsilk;
+}
+
+#output-wrapper {
+    border: 1px solid black;
+    padding: 10px 40px;
+    position: relative;
+    background-color: darkslategray;
 }
 
 #output-space {
-    margin-top: 16px;
-    border: 1px solid black;
-    padding: 4px 16px;
+position: absolute;
+top: 0;
+left: 0;
+font-family: 'Courier New', Courier, monospace;
+color: white;
 }
 
 #number-space {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 4px;
+    grid-column-gap: 4px;
+}
+
+#operators-space {
+   
+}
+
+#footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.btn {
+    border: none;
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    background-color: grey;
+    color: white;
+}
+
+.operationBtns {
+    border: none;
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    background-color: darkslategray;
+    color: white;
+}
+
+.enterBtn {
+    border: none;
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    background-color: brown;
+    color: white;
 }
