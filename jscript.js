@@ -30,6 +30,11 @@ const buttonOperators = {
     clear: document.getElementById('operatorClear'),
 };
 
+let userCalculations = {
+    first: null,
+    second: null,
+};
+
 numberPad.one.addEventListener('click', () => {
     let newInput = 1;
     inputs.push(newInput);
@@ -99,6 +104,32 @@ buttonOperators.clear.addEventListener('click', () => {
     inputs.length = 0;
     updatesOutput();
 });
+
+buttonOperators.plus.addEventListener('click', () => {
+
+    if (userCalculations.first === null) {
+        inputs.push('+');
+        userCalculations.first = inputs.slice(0, -1);
+        updatesOutput();
+        inputs.length = 0;
+    } else if (userCalculations.second === null) {
+        inputs.push('+');
+        userCalculations.second = inputs.slice(0, -1);
+        updatesOutput();
+        inputs.length = 0;
+    } else {/*addsInputs();*/};
+});
+
+/*function addsInputs() {
+    let firstInput = userCalculations.first.join(''),
+     secondInput = userCalculations.second.join(''),
+     firstNumber = parseInt(firstInput),
+     secondNumber = parseInt(secondInput);
+    userCalculations.result = firstNumber + secondNumber;
+    outputDisplay.textContent = userCalculations.result;
+    userCalculations.first = userCalculations.result;
+    userCalculations.second = null;
+}; */
 
 const darkModeBtn = document.querySelector('#mode-switch');
 darkModeBtn.addEventListener('click', () => {
