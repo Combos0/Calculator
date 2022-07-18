@@ -2,6 +2,7 @@ let inputs = [];
 
 const outputDisplay = document.getElementById('output-space');
 outputDisplay.textContent = 0;
+
 function updatesOutput() {
     outputDisplay.textContent = inputs.join('');
 };
@@ -91,6 +92,11 @@ numberPad.zero.addEventListener('click', () => {
 
 buttonOperators.backSpace.addEventListener('click', () => {
     inputs.pop();
+    updatesOutput();
+});
+
+buttonOperators.clear.addEventListener('click', () => {
+    inputs.length = 0;
     updatesOutput();
 });
 
