@@ -25,6 +25,8 @@ const buttonOperators = {
     multiply: document.getElementById('operatorMultiply'),
     divide: document.getElementById('operatorDivide'),
     enter: document.getElementById('operatorEnter'),
+    backSpace: document.getElementById('operatorBackSpace'),
+    clear: document.getElementById('operatorClear'),
 };
 
 numberPad.one.addEventListener('click', () => {
@@ -84,6 +86,11 @@ numberPad.nine.addEventListener('click', () => {
 numberPad.zero.addEventListener('click', () => {
     let newInput = 0;
     inputs.push(newInput);
+    updatesOutput();
+});
+
+buttonOperators.backSpace.addEventListener('click', () => {
+    inputs.pop();
     updatesOutput();
 });
 
