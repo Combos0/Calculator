@@ -120,13 +120,11 @@ buttonOperators.plus.addEventListener('click', () => {
         inputs.length = 0;
     } else {
         inputs.push('+');
-        userCalculations.operator = inputs[inputs.length -1];
-        console.log('before', userCalculations.second);
+        //userCalculations.operator = inputs[inputs.length -1];
         userCalculations.second = inputs.slice(0, -1);
         userCalculations.second = parseInt(userCalculations.second.join(''));
-        console.log('after', userCalculations.second);
         inputs.length = 0;
-        operates('+');
+        operates();
     };
 });
 
@@ -140,11 +138,11 @@ buttonOperators.minus.addEventListener('click', () => {
         inputs.length = 0;
     } else {
         inputs.push('-');
-        userCalculations.operator = inputs[inputs.length -1];
+        //userCalculations.operator = inputs[inputs.length -1];
         userCalculations.second = inputs.slice(0, -1);
         userCalculations.second = parseInt(userCalculations.second.join(''));
         inputs.length = 0;
-        operates('-');
+        operates();
     }
 });
 
@@ -158,11 +156,11 @@ buttonOperators.multiply.addEventListener('click', () => {
         inputs.length = 0;
     } else {
         inputs.push('*');
-        userCalculations.operator = inputs[inputs.length -1];
+        //userCalculations.operator = inputs[inputs.length -1];
         userCalculations.second = inputs.slice(0, -1);
         userCalculations.second = parseInt(userCalculations.second.join(''));
         inputs.length = 0;
-        operates('*');
+        operates();
     }
 });
 
@@ -176,11 +174,11 @@ buttonOperators.divide.addEventListener('click', () => {
         inputs.length = 0;
     } else {
         inputs.push('/');
-        userCalculations.operator = inputs[inputs.length -1];
+        //userCalculations.operator = inputs[inputs.length -1];
         userCalculations.second = inputs.slice(0, -1);
         userCalculations.second = parseInt(userCalculations.second.join(''));
         inputs.length = 0;
-        operates('/');
+        operates();
     }
 });
 
@@ -188,10 +186,19 @@ buttonOperators.enter.addEventListener('click', () => {
     operates(userCalculations.operator);
 });
 
-function operates(selectedOperator) {
+function operates() {
 
+    if (userCalculations.second === null) {
+        inputs.push(userCalculations.operator);
+        userCalculations.second = inputs.slice(0, -1);
+        userCalculations.second = parseInt(userCalculations.second.join(''));
+        inputs.length = 0;
+    };
+
+    let selectedOperator = userCalculations.operator;
     let firstNumber = userCalculations.first;
     let secondNumber = userCalculations.second;
+    console.log('before if else',selectedOperator, firstNumber, secondNumber);
 
      if (selectedOperator === '+') {
         userCalculations.result = firstNumber + secondNumber;
@@ -211,6 +218,7 @@ function operates(selectedOperator) {
     userCalculations.second = null;
     userCalculations.first = userCalculations.result;
     userCalculations.result = null;
+    console.log('after calc', selectedOperator, firstNumber, secondNumber);
 };
 
 const darkModeBtn = document.querySelector('#mode-switch');
