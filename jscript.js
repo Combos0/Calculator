@@ -113,21 +113,17 @@ buttonOperators.clear.addEventListener('click', () => {
 buttonOperators.plus.addEventListener('click', () => {
     if (userCalculations.first === null) {
         inputs.push('+');
-        console.log(inputs);
         userCalculations.operator = inputs[inputs.length -1];
         userCalculations.first = inputs.slice(0, -1);
         updatesOutput();
         inputs.length = 0;
-        console.log(userCalculations.first, inputs);
-    } else if (userCalculations.second === null) {
+    } else {
         inputs.push('+');
-        console.log(inputs);
         userCalculations.operator = inputs[inputs.length -1];
         userCalculations.second = inputs.slice(0, -1);
-        updatesOutput();
         inputs.length = 0;
-        console.log(userCalculations.second, inputs);
-    } else {/*operates();*/};
+        operates('+');
+    };
 });
 
 buttonOperators.minus.addEventListener('click', () => {
@@ -137,13 +133,13 @@ buttonOperators.minus.addEventListener('click', () => {
         userCalculations.first = inputs.slice(0, -1);
         updatesOutput();
         inputs.length = 0;
-    } else if (userCalculations.second === null) {
+    } else {
         inputs.push('-');
         userCalculations.operator = inputs[inputs.length -1];
         userCalculations.second = inputs.slice(0, -1);
-        updatesOutput();
         inputs.length = 0;
-    } else {operates('-');};
+        operates('-');
+    }
 });
 
 buttonOperators.multiply.addEventListener('click', () => {
@@ -153,13 +149,13 @@ buttonOperators.multiply.addEventListener('click', () => {
         userCalculations.first = inputs.slice(0, -1);
         updatesOutput();
         inputs.length = 0;
-    } else if (userCalculations.second === null) {
+    } else {
         inputs.push('*');
         userCalculations.operator = inputs[inputs.length -1];
         userCalculations.second = inputs.slice(0, -1);
-        updatesOutput();
         inputs.length = 0;
-    } else {operates('*');};
+        operates('*');
+    }
 });
 
 buttonOperators.divide.addEventListener('click', () => {
@@ -169,13 +165,13 @@ buttonOperators.divide.addEventListener('click', () => {
         userCalculations.first = inputs.slice(0, -1);
         updatesOutput();
         inputs.length = 0;
-    } else if (userCalculations.second === null) {
+    } else {
         inputs.push('/');
         userCalculations.operator = inputs[inputs.length -1];
         userCalculations.second = inputs.slice(0, -1);
-        updatesOutput();
         inputs.length = 0;
-    } else {operates('/');};
+        operates('/');
+    }
 });
 
 buttonOperators.enter.addEventListener('click', () => {
@@ -196,7 +192,7 @@ function operates(selectedOperator) {
      } else if (selectedOperator === '*') {
         userCalculations.result = firstNumber * secondNumber;
         outputDisplay.textContent = userCalculations.result;
-     } else {
+     } else if (selectedOperator === '/') {
         userCalculations.result = firstNumber / secondNumber;
         outputDisplay.textContent = userCalculations.result;
      };
@@ -210,8 +206,3 @@ const darkModeBtn = document.querySelector('#mode-switch');
 darkModeBtn.addEventListener('click', () => {
     document.querySelector('body').classList.toggle('darkMode');
 });
-
-/*(userCalculations.first && userCalculations.second !== null) {
-        let answer = (parseInt(userCalculations.first.join('')) + parseInt(userCalculations.second.join('')));
-        console.log(answer);
-        outputDisplay.textContent = answer;*/
