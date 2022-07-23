@@ -20,6 +20,7 @@ const numberPad = {
     seven: document.getElementById('button7'),
     eight: document.getElementById('button8'),
     nine: document.getElementById('button9'),
+    decimal: document.getElementById('buttonDecimal'),
 };
 
 const buttonOperators = {
@@ -97,6 +98,14 @@ numberPad.zero.addEventListener('click', () => {
     let newInput = 0;
     inputs.push(newInput);
     updatesOutput();
+});
+
+numberPad.decimal.addEventListener('click', () => {
+    if (inputs.includes('.') !== true) {
+        let newInput = '.';
+        inputs.push(newInput);
+        updatesOutput();
+    };
 });
 
 buttonOperators.backSpace.addEventListener('click', () => {
