@@ -42,66 +42,77 @@ let userCalculations = {
 };
 
 numberPad.one.addEventListener('click', () => {
+    checksForClearing();
     let newInput = 1;
     inputs.push(newInput);
     updatesOutput();
 });
 
 numberPad.two.addEventListener('click', () => {
+    checksForClearing();
     let newInput = 2;
     inputs.push(newInput);
     updatesOutput();
 });
 
 numberPad.three.addEventListener('click', () => {
+    checksForClearing();
     let newInput = 3;
     inputs.push(newInput);
     updatesOutput();
 });
 
 numberPad.four.addEventListener('click', () => {
+    checksForClearing();
     let newInput = 4;
     inputs.push(newInput);
     updatesOutput();
 });
 
 numberPad.five.addEventListener('click', () => {
+    checksForClearing();
     let newInput = 5;
     inputs.push(newInput);
     updatesOutput();
 });
 
 numberPad.six.addEventListener('click', () => {
+    checksForClearing();
     let newInput = 6;
     inputs.push(newInput);
     updatesOutput();
 });
 
 numberPad.seven.addEventListener('click', () => {
+    checksForClearing();
     let newInput = 7;
     inputs.push(newInput);
     updatesOutput();
 });
 
 numberPad.eight.addEventListener('click', () => {
+    checksForClearing();
     let newInput = 8;
     inputs.push(newInput);
     updatesOutput();
 });
 
 numberPad.nine.addEventListener('click', () => {
+    checksForClearing();
     let newInput = 9;
     inputs.push(newInput);
     updatesOutput();
 });
 
 numberPad.zero.addEventListener('click', () => {
+    checksForClearing();
     let newInput = 0;
     inputs.push(newInput);
     updatesOutput();
 });
 
 numberPad.decimal.addEventListener('click', () => {
+    checksForClearing();
     if (inputs.includes('.') !== true) {
         let newInput = '.';
         inputs.push(newInput);
@@ -119,6 +130,8 @@ buttonOperators.clear.addEventListener('click', () => {
     userCalculations.first = null;
     userCalculations.second = null;
     userCalculations.result = null;
+    userCalculations.lastValue = null;
+    userCalculations.operator = null;
     updatesOutput();
 });
 
@@ -151,7 +164,7 @@ buttonOperators.plus.addEventListener('click', () => {
 
 buttonOperators.minus.addEventListener('click', () => {
     if (userCalculations.first === null) {
-        userCalculations.operator = '+';
+        userCalculations.operator = '-';
         console.log('before first');
         assignsFirst('-');
         console.log(`after first, first number = ${userCalculations.first}, case 1`);
@@ -294,4 +307,15 @@ function assignsSecond(operationID) {
     updatesOutput(operationID);
     inputs.length = 0;
     console.log('end assignsSecond');
+};
+
+function checksForClearing() {
+    if ((userCalculations.first === userCalculations.result) && (userCalculations.second === null) && (userCalculations.lastValue !== null)) {
+        userCalculations.first = null;
+        userCalculations.second = null;
+        userCalculations.result = null;
+        userCalculations.lastValue = null;
+        userCalculations.operator = null;
+        console.log(`checksForClearing has triggered! usercalculations are now ${userCalculations.first} ${userCalculations.second} ${userCalculations.result} ${userCalculations.lastValue} ${userCalculations.operator}`);
+    };
 };
