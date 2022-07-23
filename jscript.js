@@ -38,6 +38,7 @@ let userCalculations = {
     second: null,
     result: null,
     operator: null,
+    lastValue: null,
 };
 
 numberPad.one.addEventListener('click', () => {
@@ -127,18 +128,24 @@ buttonOperators.plus.addEventListener('click', () => {
         console.log('before first');
         assignsFirst('+');
         console.log(`after first, first number = ${userCalculations.first}, case 1`);
-    } else if ((userCalculations.second === null) && (userCalculations.first === userCalculations.result)) {
+    } else if ((userCalculations.second ===null && inputs.length !== 0) && (userCalculations.first === userCalculations.result)) {
         console.log('case 2 start');
         userCalculations.operator = '+';
+        assignsSecond('+');
+        operates('+');
         console.log('case 2 end');
+    } else if ((userCalculations.second === null) && (userCalculations.first === userCalculations.result)) {
+        console.log('case 3 start');
+        userCalculations.operator = '+';
+        console.log('case 3 end');
     } else if (userCalculations.second === null) {
         userCalculations.operator = '+';
-        console.log('case 3 start');
+        console.log('case 4 start');
         console.log('before assignsSecond');
         assignsSecond('+');
         console.log(`after assignsSecond, second number = ${userCalculations.second}, before operates`);
         operates('+');
-        console.log('case 3 end');
+        console.log('case 4 end');
     };
 });
 
@@ -148,18 +155,24 @@ buttonOperators.minus.addEventListener('click', () => {
         console.log('before first');
         assignsFirst('-');
         console.log(`after first, first number = ${userCalculations.first}, case 1`);
-    } else if ((userCalculations.second === null) && (userCalculations.first === userCalculations.result)) {
+    } else if ((userCalculations.second ===null && inputs.length !== 0) && (userCalculations.first === userCalculations.result)) {
         console.log('case 2 start');
         userCalculations.operator = '-';
+        assignsSecond('-');
+        operates('-');
         console.log('case 2 end');
+    } else if ((userCalculations.second === null) && (userCalculations.first === userCalculations.result)) {
+        console.log('case 3 start');
+        userCalculations.operator = '-';
+        console.log('case 3 end');
     } else if (userCalculations.second === null) {
         userCalculations.operator = '-';
-        console.log('case 3 start');
+        console.log('case 4 start');
         console.log('before assignsSecond');
         assignsSecond('-');
         console.log(`after assignsSecond, second number = ${userCalculations.second}, before operates`);
         operates('-');
-        console.log('case 3 end');
+        console.log('case 4 end');
     };
 });
 
@@ -169,18 +182,24 @@ buttonOperators.multiply.addEventListener('click', () => {
         console.log('before first');
         assignsFirst('*');
         console.log(`after first, first number = ${userCalculations.first}, case 1`);
-    } else if ((userCalculations.second === null) && (userCalculations.first === userCalculations.result)) {
+    } else if ((userCalculations.second ===null && inputs.length !== 0) && (userCalculations.first === userCalculations.result)) {
         console.log('case 2 start');
         userCalculations.operator = '*';
+        assignsSecond('*');
+        operates('*');
         console.log('case 2 end');
+    } else if ((userCalculations.second === null) && (userCalculations.first === userCalculations.result)) {
+        console.log('case 3 start');
+        userCalculations.operator = '*';
+        console.log('case 3 end');
     } else if (userCalculations.second === null) {
         userCalculations.operator = '*';
-        console.log('case 3 start');
+        console.log('case 4 start');
         console.log('before assignsSecond');
         assignsSecond('*');
         console.log(`after assignsSecond, second number = ${userCalculations.second}, before operates`);
         operates('*');
-        console.log('case 3 end');
+        console.log('case 4 end');
     };
 });
 
@@ -190,18 +209,24 @@ buttonOperators.divide.addEventListener('click', () => {
         console.log('before first');
         assignsFirst('/');
         console.log(`after first, first number = ${userCalculations.first}, case 1`);
-    } else if ((userCalculations.second === null) && (userCalculations.first === userCalculations.result)) {
+    } else if ((userCalculations.second ===null && inputs.length !== 0) && (userCalculations.first === userCalculations.result)) {
         console.log('case 2 start');
         userCalculations.operator = '/';
+        assignsSecond('/');
+        operates('/');
         console.log('case 2 end');
+    } else if ((userCalculations.second === null) && (userCalculations.first === userCalculations.result)) {
+        console.log('case 3 start');
+        userCalculations.operator = '/';
+        console.log('case 3 end');
     } else if (userCalculations.second === null) {
         userCalculations.operator = '/';
-        console.log('case 3 start');
+        console.log('case 4 start');
         console.log('before assignsSecond');
         assignsSecond('/');
         console.log(`after assignsSecond, second number = ${userCalculations.second}, before operates`);
         operates('/');
-        console.log('case 3 end');
+        console.log('case 4 end');
     };
 });
 
@@ -237,10 +262,11 @@ function operates() {
         outputDisplay.textContent = userCalculations.result;
      };
 
+    userCalculations.lastValue = userCalculations.second;
     userCalculations.second = null;
     userCalculations.first = userCalculations.result;
     console.log('after calc', firstNumber, selectedOperator, secondNumber, '=', userCalculations.result);
-    console.log('raw numbers', userCalculations.first,userCalculations.operator, userCalculations.second, userCalculations.result);
+    console.log('raw numbers', userCalculations.first,userCalculations.operator, userCalculations.second, '=', userCalculations.result, 'last value =', userCalculations.lastValue);
 };
 
 const darkModeBtn = document.querySelector('#mode-switch');
@@ -260,8 +286,9 @@ function assignsSecond(operationID) {
     userCalculations.second = inputs.slice(0, 9);
     userCalculations.second = parseFloat(userCalculations.second.join(''));
     console.log(`second number = ${userCalculations.second}`);
-    if (userCalculations.second == NaN || null || '') {
-        userCalculations.second = userCalculations.first;
+    if (isNaN(userCalculations.second) === true) {
+        userCalculations.second = userCalculations.lastValue;
+        console.log(`.second = NaN, changing to equal last value ${userCalculations.lastValue}`);
     };
     console.log('updates now');
     updatesOutput(operationID);
