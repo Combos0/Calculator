@@ -1,7 +1,7 @@
 let inputs = [];
 
 const outputDisplay = document.getElementById('output-space');
-outputDisplay.textContent = 0;
+outputDisplay.textContent = '';
 
 function updatesOutput(operationID) {
     if (operationID !== ('+' || '-' || '*' || '/')) {
@@ -303,12 +303,12 @@ function operates() {
         outputDisplay.textContent = 'ERROR x(';
      };
     
-    userCalculations.operator = userCalculations.lastOperator;
+    userCalculations.lastOperator = userCalculations.operator;
     userCalculations.lastValue = userCalculations.second;
     userCalculations.second = null;
     userCalculations.first = userCalculations.result;
     console.log('after calc', firstNumber, selectedOperator, secondNumber, '=', userCalculations.result);
-    console.log('raw numbers', userCalculations.first,userCalculations.operator, userCalculations.second, '=', userCalculations.result, 'last value =', userCalculations.lastValue, 'last operator =', userCalculations.lastOperator);
+    console.log('raw numbers', userCalculations.first, userCalculations.operator, userCalculations.second, '=', userCalculations.result, 'last value =', userCalculations.lastValue, 'last operator =', userCalculations.lastOperator);
 };
 
 const darkModeBtn = document.querySelector('#mode-switch');
