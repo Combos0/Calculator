@@ -39,6 +39,7 @@ let userCalculations = {
     result: null,
     operator: null,
     lastValue: null,
+    lastOperator: null,
 };
 
 numberPad.one.addEventListener('click', () => {
@@ -132,6 +133,7 @@ buttonOperators.clear.addEventListener('click', () => {
     userCalculations.result = null;
     userCalculations.lastValue = null;
     userCalculations.operator = null;
+    userCalculations.lastOperator = null;
     updatesOutput();
 });
 
@@ -276,12 +278,13 @@ function operates() {
      if (isFinite(userCalculations.result) === false) {
         outputDisplay.textContent = 'ERROR x(';
      };
-
+    
+    userCalculations.operator = userCalculations.lastOperator;
     userCalculations.lastValue = userCalculations.second;
     userCalculations.second = null;
     userCalculations.first = userCalculations.result;
     console.log('after calc', firstNumber, selectedOperator, secondNumber, '=', userCalculations.result);
-    console.log('raw numbers', userCalculations.first,userCalculations.operator, userCalculations.second, '=', userCalculations.result, 'last value =', userCalculations.lastValue);
+    console.log('raw numbers', userCalculations.first,userCalculations.operator, userCalculations.second, '=', userCalculations.result, 'last value =', userCalculations.lastValue, 'last operator =', userCalculations.lastOperator);
 };
 
 const darkModeBtn = document.querySelector('#mode-switch');
@@ -311,13 +314,15 @@ function assignsSecond(operationID) {
     console.log('end assignsSecond');
 };
 
+//Clears all inputs only when operates has run and the user has not selected a new operator
 function checksForClearing() {
-    if ((userCalculations.first === userCalculations.result) && (userCalculations.second === null) && (userCalculations.lastValue !== null)) {
+    if ((userCalculations.first === userCalculations.result) && (userCalculations.second === null) && (userCalculations.lastValue !== null) && (userCalculations.operator === userCalculations.lastOperator)) {
         userCalculations.first = null;
         userCalculations.second = null;
         userCalculations.result = null;
         userCalculations.lastValue = null;
         userCalculations.operator = null;
-        console.log(`checksForClearing has triggered! usercalculations are now ${userCalculations.first} ${userCalculations.second} ${userCalculations.result} ${userCalculations.lastValue} ${userCalculations.operator}`);
+        userCalculations.lastOperator = null;
+        console.log(`checksForClearing has triggered! userCalculations are now ${userCalculations.first} ${userCalculations.operator} ${userCalculations.second} = ${userCalculations.result} | last value -> ${userCalculations.lastValue} | last operator -> ${userCalculations.lastOperator}`);
     };
 };
