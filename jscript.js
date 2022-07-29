@@ -143,6 +143,12 @@ buttonOperators.plus.addEventListener('click', () => {
         console.log('before first');
         assignsFirst('+');
         console.log(`after first, first number = ${userCalculations.first}, case 1`);
+    } else if ((userCalculations.first !== null) && (inputs.length !== 0) && (userCalculations.operator !== '+')) {
+        console.log('case 5 start');
+        assignsSecond(userCalculations.operator);
+        operates(userCalculations.operator);
+        userCalculations.operator = '+';
+        console.log('case 5 end')
     } else if ((userCalculations.second ===null && inputs.length !== 0) && (userCalculations.first === userCalculations.result)) {
         console.log('case 2 start');
         userCalculations.operator = '+';
@@ -170,6 +176,12 @@ buttonOperators.minus.addEventListener('click', () => {
         console.log('before first');
         assignsFirst('-');
         console.log(`after first, first number = ${userCalculations.first}, case 1`);
+    } else if ((userCalculations.first !== null) && (inputs.length !== 0) && (userCalculations.operator !== '-')) {
+        console.log('case 5 start');
+        assignsSecond(userCalculations.operator);
+        operates(userCalculations.operator);
+        userCalculations.operator = '-';
+        console.log('case 5 end')
     } else if ((userCalculations.second ===null && inputs.length !== 0) && (userCalculations.first === userCalculations.result)) {
         console.log('case 2 start');
         userCalculations.operator = '-';
@@ -197,6 +209,12 @@ buttonOperators.multiply.addEventListener('click', () => {
         console.log('before first');
         assignsFirst('*');
         console.log(`after first, first number = ${userCalculations.first}, case 1`);
+    } else if ((userCalculations.first !== null) && (inputs.length !== 0) && (userCalculations.operator !== '*')) {
+        console.log('case 5 start');
+        assignsSecond(userCalculations.operator);
+        operates(userCalculations.operator);
+        userCalculations.operator = '*';
+        console.log('case 5 end')
     } else if ((userCalculations.second ===null && inputs.length !== 0) && (userCalculations.first === userCalculations.result)) {
         console.log('case 2 start');
         userCalculations.operator = '*';
@@ -224,6 +242,12 @@ buttonOperators.divide.addEventListener('click', () => {
         console.log('before first');
         assignsFirst('/');
         console.log(`after first, first number = ${userCalculations.first}, case 1`);
+    } else if ((userCalculations.first !== null) && (inputs.length !== 0) && (userCalculations.operator !== '/')) {
+        console.log('case 5 start');
+        assignsSecond(userCalculations.operator);
+        operates(userCalculations.operator);
+        userCalculations.operator = '/';
+        console.log('case 5 end')
     } else if ((userCalculations.second ===null && inputs.length !== 0) && (userCalculations.first === userCalculations.result)) {
         console.log('case 2 start');
         userCalculations.operator = '/';
