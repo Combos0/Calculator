@@ -253,8 +253,6 @@ buttonOperators.enter.addEventListener('click', () => {
 });
 
 function operates() {
-    
-    
 
     let selectedOperator = userCalculations.operator;
     let firstNumber = userCalculations.first;
@@ -273,6 +271,10 @@ function operates() {
      } else if (selectedOperator === '/') {
         userCalculations.result = firstNumber / secondNumber;
         outputDisplay.textContent = userCalculations.result;
+     };
+
+     if (isFinite(userCalculations.result) === false) {
+        outputDisplay.textContent = 'ERROR x(';
      };
 
     userCalculations.lastValue = userCalculations.second;
