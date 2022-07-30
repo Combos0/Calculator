@@ -43,83 +43,94 @@ let userCalculations = {
 };
 
 numberPad.one.addEventListener('click', () => {
-    checksForClearing();
-    let newInput = 1;
-    inputs.push(newInput);
-    updatesOutput();
-});
+    if (inputs.length < 8) {
+        checksForClearing();
+        let newInput = 1;
+        inputs.push(newInput);
+        updatesOutput();
+}});
 
 numberPad.two.addEventListener('click', () => {
+    if (inputs.length < 8) {
     checksForClearing();
     let newInput = 2;
     inputs.push(newInput);
     updatesOutput();
-});
+}});
 
 numberPad.three.addEventListener('click', () => {
+    if (inputs.length < 8) {
     checksForClearing();
     let newInput = 3;
     inputs.push(newInput);
     updatesOutput();
-});
+}});
 
 numberPad.four.addEventListener('click', () => {
+    if (inputs.length < 8) {
     checksForClearing();
     let newInput = 4;
     inputs.push(newInput);
     updatesOutput();
-});
+}});
 
 numberPad.five.addEventListener('click', () => {
+    if (inputs.length < 8) {
     checksForClearing();
     let newInput = 5;
     inputs.push(newInput);
     updatesOutput();
-});
+}});
 
 numberPad.six.addEventListener('click', () => {
+    if (inputs.length < 8) {
     checksForClearing();
     let newInput = 6;
     inputs.push(newInput);
     updatesOutput();
-});
+}});
 
 numberPad.seven.addEventListener('click', () => {
+    if (inputs.length < 8) {
     checksForClearing();
     let newInput = 7;
     inputs.push(newInput);
     updatesOutput();
-});
+}});
 
 numberPad.eight.addEventListener('click', () => {
+    if (inputs.length < 8) {
     checksForClearing();
     let newInput = 8;
     inputs.push(newInput);
     updatesOutput();
-});
+}});
 
 numberPad.nine.addEventListener('click', () => {
+    if (inputs.length < 8) {
     checksForClearing();
     let newInput = 9;
     inputs.push(newInput);
     updatesOutput();
-});
+}});
 
 numberPad.zero.addEventListener('click', () => {
+    if (inputs.length < 8) {
     checksForClearing();
     let newInput = 0;
     inputs.push(newInput);
     updatesOutput();
-});
+}});
 
 numberPad.decimal.addEventListener('click', () => {
+    if (inputs.length < 8) {
     checksForClearing();
     if (inputs.includes('.') !== true) {
         let newInput = '.';
         inputs.push(newInput);
         updatesOutput();
     };
-});
+}});
 
 buttonOperators.backSpace.addEventListener('click', () => {
     inputs.pop();
