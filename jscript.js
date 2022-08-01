@@ -298,22 +298,26 @@ function operates() {
 
      if (selectedOperator === '+') {
         userCalculations.result = firstNumber + secondNumber;
+        roundsResult();
         outputDisplay.textContent = userCalculations.result;
      } else if (selectedOperator === '-') {
         userCalculations.result = firstNumber - secondNumber;
+        roundsResult();
         outputDisplay.textContent = userCalculations.result;
      } else if (selectedOperator === '*') {
         userCalculations.result = firstNumber * secondNumber;
+        roundsResult();
         outputDisplay.textContent = userCalculations.result;
      } else if (selectedOperator === '/') {
         userCalculations.result = firstNumber / secondNumber;
+        roundsResult();
         outputDisplay.textContent = userCalculations.result;
      };
 
      if (isFinite(userCalculations.result) === false) {
         outputDisplay.textContent = 'ERROR x(';
      };
-    
+        
     userCalculations.lastOperator = userCalculations.operator;
     userCalculations.lastValue = userCalculations.second;
     userCalculations.second = null;
@@ -359,5 +363,14 @@ function checksForClearing() {
         userCalculations.operator = null;
         userCalculations.lastOperator = null;
         console.log(`checksForClearing has triggered! userCalculations are now ${userCalculations.first} ${userCalculations.operator} ${userCalculations.second} = ${userCalculations.result} | last value -> ${userCalculations.lastValue} | last operator -> ${userCalculations.lastOperator}`);
+    };
+};
+
+function roundsResult() {
+    let result = userCalculations.result;
+    let resultLength = result.toString().length;
+    if (resultLength > 8) {
+        userCalculations.result = result.toPrecision(8);
+        console.log(userCalculations.result);
     };
 };
